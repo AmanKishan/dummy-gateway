@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: dummy-gateway
+
+eureka:
+  client:
+    instance:
+      lease-renewal-interval-in-seonds: 1
+      lease-expiration-duration-in-seconds: 2
+    service-url:
+      default-zone: http://localhost:8761
+    healthcehck:
+      enabled: true
+    lease:
+      duration: 5
+
+management:
+  security:
+    enabled: false
+
+logging:
+  level:
+    com.dummy.dummygateway: DEBUG
+
+zuul:
+  host:
+    connect-timeout-mills: 5000000
+    socket-timeout-mills: 5000000
+#### These are optionals, you can call microservices by their names    
+#  ignored-services: '*'
+#  routes:
+#     student-microservice:
+#       path: /student/**
+#       service-id: student-microservice
+#       strip-prefix: true
+#     school-microservice:
+#       path: /school/**
+#       service-id: school-microservice
+#       strip-prefix: true
