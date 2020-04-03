@@ -6,16 +6,23 @@ spring:
     name: dummy-gateway
 
 eureka:
+  instance:
+    appname: dummy-gateway
+    lease-renewal-interval-in-seonds: 5
+    lease-expiration-duration-in-seconds: 10
+    prefer-ip-address: true
   client:
-    instance:
-      lease-renewal-interval-in-seonds: 1
-      lease-expiration-duration-in-seconds: 2
-    service-url:
-      default-zone: http://localhost:8761
-    healthcehck:
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    instance-info-replication-interval-seconds: 10
+    registry-fetch-interval-seconds: 10
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+    healthcheck:
       enabled: true
     lease:
-      duration: 5
+      duration: 10
 
 management:
   security:
